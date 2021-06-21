@@ -34,7 +34,7 @@ while line:
 numcol = len(words)
 header = words
 
-data = numpy.zeros((numcol,100000))
+data = [numpy.empty() for i in range(numcol)]
 
 ln = 0
 
@@ -45,10 +45,12 @@ while line:
 		break
 
 	for i in range(numcol):
-		data[i][ln]=(float(words[i]))
+		data[i].append(float(words[i]))
 
 	ln_original = ln
 	ln = ln +1
+
+data = numpy.array(data)
 
 print("\n")
 print("Number of steps:",ln_original)
